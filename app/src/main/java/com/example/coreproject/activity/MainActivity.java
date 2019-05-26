@@ -11,9 +11,6 @@ import com.example.coreproject.R;
 import com.example.coreproject.activity.realm.ExampleRealmActivity;
 
 public class MainActivity extends AppCompatActivity{
-
-
-    RecyclerView rv_main;
     Button btn_main_realm,btn_main_sqlite,btn_main_retrofit;
 
     @Override

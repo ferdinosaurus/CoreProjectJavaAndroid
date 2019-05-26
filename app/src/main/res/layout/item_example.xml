@@ -40,9 +40,19 @@
                 android:weightSum="2"
                 >
                 <Button
-                    android:layout_width=""
-                    android:layout_height="" />
-
+                    android:id="@+id/btn_itemExample_update"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="update"
+                    />
+                <Button
+                    android:id="@+id/btn_itemExample_delete"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="update"
+                    />
             </LinearLayout>
 
         </LinearLayout>

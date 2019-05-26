@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.coreproject.R;
-import com.example.coreproject.adapter.ExampleAdapter;
+import com.example.coreproject.adapter.ExampleRealmAdapter;
 import com.example.coreproject.presenter.RealmPresenter;
 import com.example.coreproject.realm.model.ExampleModel;
 import com.example.coreproject.view.RealmView;
@@ -21,7 +21,7 @@ public class ExampleRealmActivity extends AppCompatActivity implements RealmView
     RecyclerView rv_main;
     RealmPresenter realmPresenter;
 
-    ExampleAdapter exampleAdapter;
+    ExampleRealmAdapter exampleRealmAdapter;
 
     Button btn_exampleRealm_insert;
 
@@ -67,9 +67,9 @@ public class ExampleRealmActivity extends AppCompatActivity implements RealmView
     @Override
     public void getAll(List<?> objects) {
         List<ExampleModel> exampleModelList = (List<ExampleModel>) objects;
-        exampleAdapter = new ExampleAdapter(ExampleRealmActivity.this,exampleModelList,realmPresenter);
+        exampleRealmAdapter = new ExampleRealmAdapter(ExampleRealmActivity.this,exampleModelList,realmPresenter);
 
-        rv_main.setAdapter(exampleAdapter);
+        rv_main.setAdapter(exampleRealmAdapter);
     }
 
     @Override
