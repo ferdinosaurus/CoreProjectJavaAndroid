@@ -1,0 +1,63 @@
+{
+  "project_info": {
+    "project_number": "78749077728",
+    "firebase_url": "https://sales-tracking-s-1538033699209.firebaseio.com",
+    "project_id": "sales-tracking-s-1538033699209",
+    "storage_bucket": "sales-tracking-s-1538033699209.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:78749077728:android:7c086a420922a636",
+        "android_client_info": {
+          "package_name": "com.example.coreproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "78749077728-gqui87p4l11coco9c9jc6iumgsluplsu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.sgf.japfacomfeed.salestracking",
+            "certificate_hash": "9dacfe98e6bb22584067147f5cc2256342b46bb9"
+          }
+        },
+        {
+          "client_id": "78749077728-31qvnln3rpkjmdgp6qqac664ne0li1p8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "id.sgf.japfacomfeed.salestracking",
+            "certificate_hash": "d7db0a6e0b34795bc6ba580a094588ba3ce95a54"
+          }
+        },
+        {
+          "client_id": "78749077728-chmr95j1in80d6sufb4jsv8i0tcev3th.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpPJtijqutG9EDImIhH0USao5PF1zBwSA"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "78749077728-chmr95j1in80d6sufb4jsv8i0tcev3th.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

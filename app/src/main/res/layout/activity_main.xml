@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainActivity"
+    android:orientation="vertical"
+    android:gravity="center"
+    >
+    <Button
+        android:id="@+id/btn_main_realm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="realm example"
+        />
+    <Button
+        android:id="@+id/btn_main_sqlite"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sqlite example"
+        />
+    <Button
+        android:id="@+id/btn_main_retrofit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="retrofit example"
+        />
+</LinearLayout>
