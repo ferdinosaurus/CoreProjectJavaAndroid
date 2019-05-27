@@ -23,6 +23,10 @@ public class RealmPresenter {
         RealmResults<?> realmResults = (RealmResults<?>) realmController.getAll(realmModel);
         realmView.getAll(realmResults);
     }
+    public void getById(RealmModel realmModel,String key,String value){
+        Object realmResults = realmController.getByID(realmModel,key,value);
+        realmView.get(realmResults);
+    }
 
     public void insertExampleModel(String nama,String email,String phone,String alamat){
         ExampleModel exampleModel = new ExampleModel();
@@ -32,5 +36,16 @@ public class RealmPresenter {
         exampleModel.setAlamat(alamat);
 
         realmController.insert(exampleModel);
+    }
+
+    public void updateExampleModelByID(String id,String nama,String email,String phone,String alamat){
+        ExampleModel exampleModel = (ExampleModel) realmController.getByID(new ExampleModel(),ExampleModel.KEY_ID,id);
+
+        realmController.openRealm();
+        exampleModel.setNama(nama);
+        exampleModel.setEmail(email);
+        exampleModel.setPhone(phone);
+        exampleModel.setAlamat(alamat);
+        realmController.closeRealm();
     }
 }

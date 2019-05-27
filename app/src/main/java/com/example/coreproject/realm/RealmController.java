@@ -22,6 +22,18 @@ public class RealmController{
         realm = Realm.getDefaultInstance();
     }
 
+    public Realm getRealm() {
+        return realm;
+    }
+
+    public void openRealm(){
+        realm.beginTransaction();
+    }
+
+    public void closeRealm(){
+        realm.commitTransaction();
+    }
+
     public void insert(final RealmModel realmModel){
         realm.executeTransaction(new Realm.Transaction() {
             @Override
@@ -47,7 +59,7 @@ public class RealmController{
     }
 
     public Object getByID(RealmModel realmModel,String key,String value){
-        return realm.where(realmModel.getClass()).equalTo(key,value).findAll();
+        return realm.where(realmModel.getClass()).equalTo(key,value).findFirst();
     }
 
     public List<?> getAllByCondition(RealmModel realmModel,List<KeyValueParcelable> keyValueParcelableList){
@@ -63,7 +75,7 @@ public class RealmController{
     }
 
     public void deleteById(RealmModel realmModel,String key,String value){
-        final RealmResults<?> realmResults = (RealmResults<?>) realm.where(realmModel.getClass()).equalTo(key,value).findFirst();
+        final RealmResults<?> realmResults = (RealmResults<?>) realm.where(realmModel.getClass()).equalTo(key,value).findAll();
 
         realm.executeTransaction(new Realm.Transaction() {
             @Override

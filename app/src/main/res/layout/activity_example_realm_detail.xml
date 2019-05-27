@@ -4,38 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.realm.ExampleRealmInsertUpdateActivity"
+    tools:context=".activity.realm.ExampleRealmDetailActivity"
     android:orientation="vertical"
     >
-    <EditText
-        android:id="@+id/et_realmInsertUpdate_nama"
+    <TextView
+        android:id="@+id/tv_realmDetail_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="nama"
+        android:text="id value"
         />
-    <EditText
-        android:id="@+id/et_realmInsertUpdate_email"
+    <TextView
+        android:id="@+id/tv_realmDetail_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="email"
+        android:text="nama value"
         />
-    <EditText
-        android:id="@+id/et_realmInsertUpdate_phone"
+    <TextView
+        android:id="@+id/tv_realmDetail_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="phone"
+        android:text="nama value"
         />
-    <EditText
-        android:id="@+id/et_realmInsertUpdate_alamat"
+    <TextView
+        android:id="@+id/tv_realmDetail_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="alamat"
+        android:text="nama value"
         />
-
+    <TextView
+        android:id="@+id/tv_realmDetail_alamat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="nama value"
+        />
     <Button
-        android:id="@+id/btn_realmInsertUpdate_submit"
+        android:id="@+id/btn_realmDetail_delete"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="submit"
+        android:text="delete"
         />
 </LinearLayout>

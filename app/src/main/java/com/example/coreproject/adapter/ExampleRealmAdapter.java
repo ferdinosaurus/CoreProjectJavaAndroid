@@ -1,6 +1,7 @@
 package com.example.coreproject.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +12,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.coreproject.R;
+import com.example.coreproject.activity.realm.ExampleRealmDetailActivity;
+import com.example.coreproject.activity.realm.ExampleRealmInsertUpdateActivity;
 import com.example.coreproject.helper.DialogHelper;
 import com.example.coreproject.presenter.RealmPresenter;
 import com.example.coreproject.realm.RealmController;
@@ -53,6 +56,25 @@ public class ExampleRealmAdapter extends RecyclerView.Adapter<ExampleRealmAdapte
         itemHolder.tv_itemexample_id.setText(exampleModel.getId());
         itemHolder.tv_itemexample_name.setText(exampleModel.getNama());
 
+        itemHolder.cv_itemexample.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ExampleRealmDetailActivity.class);
+                intent.putExtra("id",exampleModel.getId());
+                activity.startActivity(intent);
+            }
+        });
+
+        itemHolder.btn_itemExample_update.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, ExampleRealmInsertUpdateActivity.class);
+                intent.putExtra("task","update");
+                intent.putExtra("id",exampleModel.getId());
+                activity.startActivity(intent);
+            }
+        });
+
         itemHolder.btn_itemExample_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +88,7 @@ public class ExampleRealmAdapter extends RecyclerView.Adapter<ExampleRealmAdapte
             @Override
             public void buttonPositive() {
                 realmController.deleteById(new ExampleModel(),ExampleModel.KEY_ID,exampleModel.getId());
+                notifyDataSetChanged();
             }
 
             @Override

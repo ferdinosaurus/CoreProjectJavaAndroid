@@ -48,6 +48,7 @@ public class ExampleRealmActivity extends AppCompatActivity implements RealmView
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(ExampleRealmActivity.this,ExampleRealmInsertUpdateActivity.class);
+                intent.putExtra("task","insert");
                 startActivity(intent);
             }
         });
