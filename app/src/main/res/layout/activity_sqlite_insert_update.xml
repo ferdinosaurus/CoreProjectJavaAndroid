@@ -4,38 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.realm.ExampleRealmInsertUpdateActivity"
+    tools:context=".activity.sqlite.SqliteInsertUpdateActivity"
     android:orientation="vertical"
     >
+
     <EditText
-        android:id="@+id/et_realmInsertUpdate_nama"
+        android:id="@+id/et_sqliteInsertUpdate_nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="nama"
         />
     <EditText
-        android:id="@+id/et_realmInsertUpdate_email"
+        android:id="@+id/et_sqliteInsertUpdate_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="email"
         />
     <EditText
-        android:id="@+id/et_realmInsertUpdate_phone"
+        android:id="@+id/et_sqliteInsertUpdate_phone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="phone"
         />
     <EditText
-        android:id="@+id/et_realmInsertUpdate_alamat"
+        android:id="@+id/et_sqliteInsertUpdate_alamat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="alamat"
         />
 
     <Button
-        android:id="@+id/btn_realmInsertUpdate_submit"
+        android:id="@+id/btn_sqliteInsertUpdate_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="submit"
         />
+
 </LinearLayout>

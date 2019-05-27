@@ -9,6 +9,7 @@ import android.widget.Button;
 
 import com.example.coreproject.R;
 import com.example.coreproject.activity.realm.ExampleRealmActivity;
+import com.example.coreproject.activity.sqlite.SqliteActivity;
 
 public class MainActivity extends AppCompatActivity{
     Button btn_main_realm,btn_main_sqlite,btn_main_retrofit;
@@ -33,6 +34,14 @@ public class MainActivity extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(MainActivity.this, ExampleRealmActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        btn_main_sqlite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SqliteActivity.class);
                 startActivity(intent);
             }
         });
