@@ -38,7 +38,23 @@ public class SqlitePresenter {
 
     public void getAllExample(){
         List<ExampleParcelable> exampleParcelableList = exampleDao.getAll();
-
         localView.getAll(exampleParcelableList);
+    }
+
+    public void getByID(long id){
+        ExampleParcelable exampleParcelable = exampleDao.getByID(id);
+        localView.get(exampleParcelable);
+    }
+
+    public void update(long id,String nama,String email,String phone,String alamat){
+        ExampleParcelable exampleParcelable = new ExampleParcelable();
+
+        exampleParcelable.setId(id);
+        exampleParcelable.setName(nama);
+        exampleParcelable.setEmail(email);
+        exampleParcelable.setPhone(phone);
+        exampleParcelable.setAlamat(alamat);
+
+        exampleDao.update(exampleParcelable);
     }
 }

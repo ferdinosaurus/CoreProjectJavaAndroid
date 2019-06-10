@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.coreproject.R;
 import com.example.coreproject.presenter.SqlitePresenter;
@@ -22,13 +23,15 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity implements Loc
     //ExampleDao exampleDao;
 
     SqlitePresenter sqlitePresenter;
-
+    long id;
+    String task;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sqlite_insert_update);
         init();
+        checkTask();
         setupListener();
     }
 
@@ -39,21 +42,47 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity implements Loc
         et_sqliteInsertUpdate_alamat = findViewById(R.id.et_sqliteInsertUpdate_alamat);
         btn_sqliteInsertUpdate_submit = findViewById(R.id.btn_sqliteInsertUpdate_submit);
 
-        //exampleDao = new ExampleDao(this);
         sqlitePresenter = new SqlitePresenter(this,this);
+        id = getIntent().getLongExtra("id",0);
+        task = getIntent().getStringExtra("task");
+    }
+
+    private void checkTask(){
+        if(task.equals("insert")){
+            Toast.makeText(this, "ini insert", Toast.LENGTH_SHORT).show();
+        }else if(task.equals("update")){
+            sqlitePresenter.getByID(id);
+        }
     }
 
     private void setupListener(){
         btn_sqliteInsertUpdate_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                sqlitePresenter.insertExample(et_sqliteInsertUpdate_nama.getText().toString(),
-                        et_sqliteInsertUpdate_email.getText().toString(),
-                        et_sqliteInsertUpdate_phone.getText().toString(),
-                        et_sqliteInsertUpdate_alamat.getText().toString());
+                if(task.equals("insert")){
+                    insert();
+                }else if(task.equals("update")){
+                    update();
+                }else{
+                    Toast.makeText(SqliteInsertUpdateActivity.this, "task not found", Toast.LENGTH_SHORT).show();
+                }
                 finish();
             }
         });
+    }
+
+    private void insert(){
+        sqlitePresenter.insertExample(et_sqliteInsertUpdate_nama.getText().toString(),
+                et_sqliteInsertUpdate_email.getText().toString(),
+                et_sqliteInsertUpdate_phone.getText().toString(),
+                et_sqliteInsertUpdate_alamat.getText().toString());
+    }
+
+    private void update(){
+        sqlitePresenter.update(id,et_sqliteInsertUpdate_nama.getText().toString(),
+                et_sqliteInsertUpdate_email.getText().toString(),
+                et_sqliteInsertUpdate_phone.getText().toString(),
+                et_sqliteInsertUpdate_alamat.getText().toString());
     }
 
     @Override
@@ -63,6 +92,11 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity implements Loc
 
     @Override
     public void get(Object object) {
+        ExampleParcelable exampleParcelable = (ExampleParcelable) object;
 
+        et_sqliteInsertUpdate_nama.setText(exampleParcelable.getName());
+        et_sqliteInsertUpdate_email.setText(exampleParcelable.getEmail());
+        et_sqliteInsertUpdate_phone.setText(exampleParcelable.getPhone());
+        et_sqliteInsertUpdate_alamat.setText(exampleParcelable.getAlamat());
     }
 }

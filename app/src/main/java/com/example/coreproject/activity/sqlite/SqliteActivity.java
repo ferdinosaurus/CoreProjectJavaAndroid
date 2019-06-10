@@ -39,7 +39,7 @@ public class SqliteActivity extends AppCompatActivity implements LocalView {
     @Override
     protected void onResume() {
         super.onResume();
-        setupData();
+        sqlitePresenter.getAllExample();
     }
 
     private void init(){
@@ -57,20 +57,17 @@ public class SqliteActivity extends AppCompatActivity implements LocalView {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(SqliteActivity.this,SqliteInsertUpdateActivity.class);
+                intent.putExtra("task","insert");
                 startActivity(intent);
             }
         });
     }
 
-    private void setupData(){
-        List<ExampleParcelable> exampleParcelableList = exampleDao.getAll();
-        exampleSqliteAdapter = new ExampleSqliteAdapter(this,exampleParcelableList,sqlitePresenter);
-        rv_sqlite.setAdapter(exampleSqliteAdapter);
-    }
-
     @Override
     public void getAll(List<?> objects) {
-
+        List<ExampleParcelable> exampleParcelableList = (List<ExampleParcelable>) objects;
+        exampleSqliteAdapter = new ExampleSqliteAdapter(this,exampleParcelableList,sqlitePresenter);
+        rv_sqlite.setAdapter(exampleSqliteAdapter);
     }
 
     @Override

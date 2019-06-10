@@ -71,4 +71,36 @@ public class ExampleDao {
         database.delete(ExampleTable.TABLE_NAME_EXAMPLE,ExampleTable.EXAMPLE_COLUMN_ID+" = "+id,null);
         close();
     }
+
+    public ExampleParcelable getByID(long id){
+        ExampleParcelable exampleParcelable = new ExampleParcelable();
+
+        open();
+
+        String query = "SELECT * FROM "+ExampleTable.TABLE_NAME_EXAMPLE+" WHERE "+ExampleTable.EXAMPLE_COLUMN_ID+" = "+id;
+        Cursor cursor = database.rawQuery(query,null);
+
+        cursor.moveToFirst();
+        exampleParcelable = fetchRow(cursor);
+
+        close();
+
+        return exampleParcelable;
+    }
+
+    public long update(ExampleParcelable exampleParcelable){
+        open();
+
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(ExampleTable.EXAMPLE_COLUMN_NAMA,exampleParcelable.getName());
+        contentValues.put(ExampleTable.EXAMPLE_COLUMN_EMAIL,exampleParcelable.getEmail());
+        contentValues.put(ExampleTable.EXAMPLE_COLUMN_PHONE,exampleParcelable.getPhone());
+        contentValues.put(ExampleTable.EXAMPLE_COLUMN_ALAMAT,exampleParcelable.getAlamat());
+        long returnValue = database.update(ExampleTable.TABLE_NAME_EXAMPLE,contentValues,ExampleTable.EXAMPLE_COLUMN_ID+" = "+exampleParcelable.getId(),null);
+
+        close();
+
+        return returnValue;
+    }
 }

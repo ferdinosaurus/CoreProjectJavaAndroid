@@ -1,6 +1,7 @@
 package com.example.coreproject.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -12,6 +13,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.coreproject.R;
+import com.example.coreproject.activity.sqlite.SqliteDetailActivity;
+import com.example.coreproject.activity.sqlite.SqliteInsertUpdateActivity;
 import com.example.coreproject.presenter.SqlitePresenter;
 import com.example.coreproject.sqlite.dao.ExampleDao;
 import com.example.coreproject.sqlite.parcelable.ExampleParcelable;
@@ -22,7 +25,7 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
 
     Activity activity;
     List<ExampleParcelable> exampleParcelableList;
-    ExampleDao exampleDao;
+    //ExampleDao exampleDao;
 
     SqlitePresenter sqlitePresenter;
 
@@ -30,7 +33,6 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
         this.activity = activity;
         this.exampleParcelableList = exampleParcelableList;
         this.sqlitePresenter = sqlitePresenter;
-        exampleDao = new ExampleDao(activity);
     }
 
     @NonNull
@@ -51,6 +53,9 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
             @Override
             public void onClick(View v) {
                 Toast.makeText(activity, "id : "+exampleParcelable.getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, SqliteDetailActivity.class);
+                intent.putExtra("id",exampleParcelable.getId());
+                activity.startActivity(intent);
             }
         });
 
@@ -59,13 +64,18 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
             public void onClick(View v) {
                 Toast.makeText(activity, "id delete : "+exampleParcelable.getId(), Toast.LENGTH_SHORT).show();
                 //exampleDao.delete(exampleParcelable.getId());
+                sqlitePresenter.delete(exampleParcelable.getId());
+                sqlitePresenter.getAllExample();
             }
         });
 
         itemHolder.btn_itemExample_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "id update : "+exampleParcelable.getId(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(activity, SqliteInsertUpdateActivity.class);
+                intent.putExtra("task","update");
+                intent.putExtra("id",exampleParcelable.getId());
+                activity.startActivity(intent);
             }
         });
     }
