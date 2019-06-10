@@ -7,15 +7,22 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.coreproject.R;
+import com.example.coreproject.presenter.SqlitePresenter;
 import com.example.coreproject.sqlite.dao.ExampleDao;
 import com.example.coreproject.sqlite.parcelable.ExampleParcelable;
+import com.example.coreproject.view.LocalView;
 
-public class SqliteInsertUpdateActivity extends AppCompatActivity {
+import java.util.List;
+
+public class SqliteInsertUpdateActivity extends AppCompatActivity implements LocalView {
 
     EditText et_sqliteInsertUpdate_nama,et_sqliteInsertUpdate_email,et_sqliteInsertUpdate_phone,et_sqliteInsertUpdate_alamat;
     Button btn_sqliteInsertUpdate_submit;
 
-    ExampleDao exampleDao;
+    //ExampleDao exampleDao;
+
+    SqlitePresenter sqlitePresenter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,23 +39,30 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity {
         et_sqliteInsertUpdate_alamat = findViewById(R.id.et_sqliteInsertUpdate_alamat);
         btn_sqliteInsertUpdate_submit = findViewById(R.id.btn_sqliteInsertUpdate_submit);
 
-        exampleDao = new ExampleDao(this);
+        //exampleDao = new ExampleDao(this);
+        sqlitePresenter = new SqlitePresenter(this,this);
     }
 
     private void setupListener(){
         btn_sqliteInsertUpdate_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
-                ExampleParcelable exampleParcelable = new ExampleParcelable();
-
-                exampleParcelable.setName(et_sqliteInsertUpdate_nama.getText().toString());
-                exampleParcelable.setEmail(et_sqliteInsertUpdate_email.getText().toString());
-                exampleParcelable.setPhone(et_sqliteInsertUpdate_phone.getText().toString());
-                exampleParcelable.setAlamat(et_sqliteInsertUpdate_alamat.getText().toString());
-
-                exampleDao.insert(exampleParcelable);
+                sqlitePresenter.insertExample(et_sqliteInsertUpdate_nama.getText().toString(),
+                        et_sqliteInsertUpdate_email.getText().toString(),
+                        et_sqliteInsertUpdate_phone.getText().toString(),
+                        et_sqliteInsertUpdate_alamat.getText().toString());
                 finish();
             }
         });
+    }
+
+    @Override
+    public void getAll(List<?> objects) {
+
+    }
+
+    @Override
+    public void get(Object object) {
+
     }
 }

@@ -12,18 +12,21 @@ import android.widget.Toast;
 import com.example.coreproject.R;
 import com.example.coreproject.activity.realm.ExampleRealmActivity;
 import com.example.coreproject.adapter.ExampleSqliteAdapter;
+import com.example.coreproject.presenter.SqlitePresenter;
 import com.example.coreproject.sqlite.dao.ExampleDao;
 import com.example.coreproject.sqlite.parcelable.ExampleParcelable;
+import com.example.coreproject.view.LocalView;
 
 import java.util.List;
 
-public class SqliteActivity extends AppCompatActivity {
+public class SqliteActivity extends AppCompatActivity implements LocalView {
 
     Button btn_sqlite_insert;
     RecyclerView rv_sqlite;
 
     ExampleSqliteAdapter exampleSqliteAdapter;
     ExampleDao exampleDao;
+    SqlitePresenter sqlitePresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +50,7 @@ public class SqliteActivity extends AppCompatActivity {
         rv_sqlite.setLayoutManager(linearLayoutManager);
 
         exampleDao = new ExampleDao(this);
+        sqlitePresenter = new SqlitePresenter(this,this);
     }
     private void setupListener(){
         btn_sqlite_insert.setOnClickListener(new View.OnClickListener() {
@@ -60,7 +64,17 @@ public class SqliteActivity extends AppCompatActivity {
 
     private void setupData(){
         List<ExampleParcelable> exampleParcelableList = exampleDao.getAll();
-        exampleSqliteAdapter = new ExampleSqliteAdapter(this,exampleParcelableList);
+        exampleSqliteAdapter = new ExampleSqliteAdapter(this,exampleParcelableList,sqlitePresenter);
         rv_sqlite.setAdapter(exampleSqliteAdapter);
+    }
+
+    @Override
+    public void getAll(List<?> objects) {
+
+    }
+
+    @Override
+    public void get(Object object) {
+
     }
 }

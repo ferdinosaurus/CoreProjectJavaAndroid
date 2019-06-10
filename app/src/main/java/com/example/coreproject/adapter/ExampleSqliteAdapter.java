@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.coreproject.R;
+import com.example.coreproject.presenter.SqlitePresenter;
+import com.example.coreproject.sqlite.dao.ExampleDao;
 import com.example.coreproject.sqlite.parcelable.ExampleParcelable;
 
 import java.util.List;
@@ -20,10 +22,15 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
 
     Activity activity;
     List<ExampleParcelable> exampleParcelableList;
+    ExampleDao exampleDao;
 
-    public ExampleSqliteAdapter(Activity activity, List<ExampleParcelable> exampleParcelableList) {
+    SqlitePresenter sqlitePresenter;
+
+    public ExampleSqliteAdapter(Activity activity, List<ExampleParcelable> exampleParcelableList, SqlitePresenter sqlitePresenter) {
         this.activity = activity;
         this.exampleParcelableList = exampleParcelableList;
+        this.sqlitePresenter = sqlitePresenter;
+        exampleDao = new ExampleDao(activity);
     }
 
     @NonNull
@@ -50,14 +57,15 @@ public class ExampleSqliteAdapter extends RecyclerView.Adapter<ExampleSqliteAdap
         itemHolder.btn_itemExample_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "delete", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "id delete : "+exampleParcelable.getId(), Toast.LENGTH_SHORT).show();
+                //exampleDao.delete(exampleParcelable.getId());
             }
         });
 
         itemHolder.btn_itemExample_update.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(activity, "update", Toast.LENGTH_SHORT).show();
+                Toast.makeText(activity, "id update : "+exampleParcelable.getId(), Toast.LENGTH_SHORT).show();
             }
         });
     }

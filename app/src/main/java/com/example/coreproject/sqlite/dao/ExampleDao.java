@@ -65,4 +65,10 @@ public class ExampleDao {
 
         return exampleParcelableList;
     }
+
+    public void delete(long id){
+        open();
+        database.delete(ExampleTable.TABLE_NAME_EXAMPLE,ExampleTable.EXAMPLE_COLUMN_ID+" = "+id,null);
+        close();
+    }
 }
