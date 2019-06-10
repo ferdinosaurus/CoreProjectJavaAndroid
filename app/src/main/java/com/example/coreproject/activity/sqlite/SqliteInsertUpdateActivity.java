@@ -9,7 +9,6 @@ import android.widget.Toast;
 
 import com.example.coreproject.R;
 import com.example.coreproject.presenter.SqlitePresenter;
-import com.example.coreproject.sqlite.dao.ExampleDao;
 import com.example.coreproject.sqlite.parcelable.ExampleParcelable;
 import com.example.coreproject.view.LocalView;
 
@@ -19,9 +18,6 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity implements Loc
 
     EditText et_sqliteInsertUpdate_nama,et_sqliteInsertUpdate_email,et_sqliteInsertUpdate_phone,et_sqliteInsertUpdate_alamat;
     Button btn_sqliteInsertUpdate_submit;
-
-    //ExampleDao exampleDao;
-
     SqlitePresenter sqlitePresenter;
     long id;
     String task;
@@ -48,9 +44,7 @@ public class SqliteInsertUpdateActivity extends AppCompatActivity implements Loc
     }
 
     private void checkTask(){
-        if(task.equals("insert")){
-            Toast.makeText(this, "ini insert", Toast.LENGTH_SHORT).show();
-        }else if(task.equals("update")){
+        if(task.equals("update")){
             sqlitePresenter.getByID(id);
         }
     }
