@@ -18,7 +18,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity.sqlite.SqliteDetailActivity"></activity>
+        <activity android:name=".activity.retrofit.RetrofitActivity"></activity>
+        <activity android:name=".activity.sqlite.SqliteDetailActivity" />
         <activity android:name=".activity.sqlite.SqliteInsertUpdateActivity" />
         <activity android:name=".activity.sqlite.SqliteActivity" />
         <activity android:name=".activity.realm.ExampleRealmDetailActivity" />
